@@ -39,16 +39,17 @@ Expected Output:
 
 # Solution
 
-My solution is using an Object-oriented programming(OOP) model. First, I identified the potential objects, such as Position, Controller, Explorer, Land.
+My solution is using an object-oriented modelling for this problem. First, I identified the potential objects, such as Position, Controller, Explorer, Land.
 
-Next, for each explorer, when building a constructor, we should initially check the validation of input data if it’s out of bounds or be NULL. Hence, we require the explorer’s coordinate X (row), coordinate Y (col) and Position (N,S,W,E), and LandingArea (x,y).
+Next, for each explorer, within a constructor, I initially checked the validation of input data if it’s out of bounds or be NULL. Hence, we require the explorer’s coordinate X (row), coordinate Y (col) and Position (N,S,W,E), and LandingArea (x,y).
 
-For each position, I constructed an interface to generate the basic functions: moveForward, turnRight, turnLeft. I combined these different operations with four directions (East, North, South, West). For example, if the explorer initially faces the North, then executing the command “turnLeft”, he will face West (new West() inside turnLeft() function). And if next order is to move forward, then new coordinate will be: coordinate X (x-1) and coordinate Y (unchanged). All positions will be called by using SearchPosition() function.
+For each position, I constructed an interface to generate the basic abstract functions: moveForward, turnRight, turnLeft. I combined these three different functions with four directions (East, North, South, West). For example, if the explorer initially faces the North, then executing the command “turnLeft”, he will face West (new West() inside turnLeft() function). And if next command is to move forward, then the new coordinate will be: coordinate X (x-1) and coordinate Y (unchanged). All positions will be called by using SearchPosition() function.
 
 For each control, I also generated an interface Controller to execute command: MoveForwardControl, TurnLeftControl, TurnRightControl. These controls will call corresponding functions in the Explorer class.
 
 For the landing area, I set up the origin points is (0,0).
 
-To read the input data from file, I used a InputFileReader by opening BufferedReader and InputStreamReader, which are more functional than Scanner. Then to parse the three lines (Landing location, Explorer position, Command) in the file, I wrote three different functions to parse each line. I split the String, and made Integer corresponding to coordinate(x,y) and Char corresponding to direction and command .
+To read the input data from file, I used a class named InputFileReader by opening BufferedReader and InputStreamReader, which are more functional than Scanner. Then to parse the three lines (Landing location, Explorer position, Command) in the file, I wrote three different functions to parse each line. I split the String, and made Integer corresponding to coordinate(x,y) and Char corresponding to direction and command .
 
-In the main function, I filtered out the landing area location from the list, and I focused on how to iterate over the rest of lines (2-4 line from Test Input). I iterated over every two lines by using for loop, since every explorer needs two lines data (one for his location, another one for command on him). However, landing area location is essential to put into the findExplorerPosition() function to check the boundary.
+In the main function, I filtered out the landing area location from the list, and I focused on how to iterate over the rest of lines (the 2-4 line in Test Input). I iterated over every two lines by using a For Loop, since every explorer requires two lines data (one for his location, another one for command on him). Besides, landing area location is essential to put into the findExplorerPosition() function to check the boundary.
+
